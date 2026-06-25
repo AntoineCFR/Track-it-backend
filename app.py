@@ -14,8 +14,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler()])
 
-print(f'API Key {Config.FIRESTORE_API_KEY} retrieved from environment variables')
-Config.firestore_client = initialize_firestore_app(Config.FIRESTORE_API_KEY)
+Config.firestore_client = initialize_firestore_app(Config.GOOGLE_APPLICATION_CREDENTIALS)
 
 app = Flask(__name__)
 

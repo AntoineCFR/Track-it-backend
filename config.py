@@ -1,5 +1,5 @@
 # Standard libraries
-import os
+# /
 
 # Third-party libraries
 # /
@@ -11,8 +11,8 @@ print('Reading config file...')
 
 class Config:
     
-    # Firestore credentials
-    FIRESTORE_API_KEY = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    # Firestore credentials path
+    GOOGLE_APPLICATION_CREDENTIALS = '/etc/secrets/FIRESTORE_SECRET'
     firestore_client = None
 
     # Firestore table info
