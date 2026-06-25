@@ -15,7 +15,8 @@ logger.info('Reading config file...')
 class Config:
     
     # Firestore credentials
-    firestore_client = initialize_firestore_app(os.getenv('FIRESTORE_SECRET'))
+    FIRESTORE_SECRET = os.getenv('FIRESTORE_SECRET')
+    firestore_client = None
 
     # Firestore table info
     FIRESTORE_USERS_COLLECTION = 'users'
