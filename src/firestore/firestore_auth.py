@@ -14,8 +14,9 @@ from firebase_admin import firestore
 logger = logging.getLogger(__name__)
 
 def initialize_firestore_app(firestore_secret):
-
+    print('I WAS HERE !!!!!!!!!')
     if not firestore_secret:
+        print('I WAS ALSO HERE !!!!!!!!!')
         logger.error("FIRESTORE_SECRET empty or missing.")
         raise ValueError(
             "Could not retrieve FIRESTORE_SECRET from system files."
