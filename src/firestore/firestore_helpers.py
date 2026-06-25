@@ -1,5 +1,6 @@
 # Standard libraries
 import logging
+import tempfile
 
 # Third-party libraries
 import firebase_admin
@@ -12,12 +13,14 @@ from config import Config
 # Initiate logs
 logger = logging.getLogger(__name__)
 
-# Check authentication to Firebase and authenticate if not found
-if not firebase_admin._apps:
-    cred = credentials.Certificate(Config.FIRESTORE_SECRET)
-    logger.info(f'Trying to authenticate to Firebase using secret starting with {Config.FIRESTORE_SECRET[10]}...')
+def initialize_firestore_app(firestore_secret):
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as ff:
+        ff.write(firestore_secret)
+        firestore_secret_json = ff.name
+    cred = credentials.Certificate(firestore_secret_json)
+    logger.info(f'Trying to authenticate to Firebase using {firestore_secret_json}...')
     firebase_admin.initialize_app(cred)
-    db = firestore.client()
+    return firestore.client()
 
 def get_firestore_documents_from_collection(collection):
     ''' Function description
@@ -31,6 +34,3 @@ def get_firestore_documents_from_collection(collection):
     for doc in docs:
         logger.info(f"{doc.id} => {doc.to_dict()}")
     return 1
-
-def firestore_helpers_main():
-    get_firestore_documents_from_collection('users')
