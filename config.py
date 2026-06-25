@@ -1,5 +1,7 @@
 # Standard libraries
 import os
+import tempfile
+import json
 
 # Third-party libraries
 # /
@@ -10,7 +12,11 @@ import os
 class Config:
     
     # Environment variables
-    FIRESTORE_SECRET = os.getenv('FIRESTORE_SECRET')
+    firestore_secret_json = os.getenv('FIRESTORE_SECRET')
+    if firestore_secret_json:
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as ff:
+            ff.write(firestore_secret_json)
+            FIRESTORE_SECRET = ff.name
 
     # Firestore table info
     FIRESTORE_USERS_COLLECTION = 'users'
