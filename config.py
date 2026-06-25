@@ -5,7 +5,7 @@ import os
 # /
 
 # Local libraries
-from src.firestore.firestore_helpers import initialize_firestore_app
+from src.firestore.firestore_auth import initialize_firestore_app
 
 class Config:
     
