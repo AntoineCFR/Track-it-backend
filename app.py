@@ -14,6 +14,7 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler()])
 
+print(Config.FIRESTORE_SECRET[10])
 Config.firestore_client = initialize_firestore_app(Config.FIRESTORE_SECRET)
 
 app = Flask(__name__)
