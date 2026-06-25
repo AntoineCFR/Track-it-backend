@@ -14,6 +14,7 @@ from firebase_admin import firestore
 logger = logging.getLogger(__name__)
 
 def initialize_firestore_app(firestore_secret):
+    logger.info('Attempting to create JSON file for Firebase credentials...')
     with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as ff:
         ff.write(firestore_secret)
         firestore_secret_json = ff.name

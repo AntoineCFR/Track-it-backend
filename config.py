@@ -1,11 +1,16 @@
 # Standard libraries
 import os
+import logging
 
 # Third-party libraries
 # /
 
 # Local libraries
 from src.firestore.firestore_auth import initialize_firestore_app
+
+# Initiate logs
+logger = logging.getLogger(__name__)
+logger.info('Reading config file...')
 
 class Config:
     
