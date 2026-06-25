@@ -17,4 +17,4 @@ app = Flask(__name__)
 
 @app.route('/api/users', methods=['GET'])
 def users_get():
-    return 1, Config.HTTP_SUCCESS_CODE
+    return app_users_get(), Config.HTTP_SUCCESS_CODE
