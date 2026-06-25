@@ -1,6 +1,15 @@
-from flask import Flask
+# Standard libraries
+# /
+
+# Third-party libraries
+from flask import Flask, jsonify
+
+# Local libraries
+from config import Config
+from src.app.app_helpers import app_users_get
+
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+@app.route('/api/users', methods=['GET'])
+def users_get():
+    return jsonify(app_users_get()), Config.HTTP_SUCCESS_CODE
