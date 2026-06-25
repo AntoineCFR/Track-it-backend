@@ -14,8 +14,8 @@ logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[logging.StreamHandler()])
 
-print(Config.FIRESTORE_SECRET[10])
-Config.firestore_client = initialize_firestore_app(Config.FIRESTORE_SECRET)
+print(f'API Key starting with [{Config.FIRESTORE_API_KEY[10]}...] retrieved from environment variables')
+Config.firestore_client = initialize_firestore_app(Config.FIRESTORE_API_KEY)
 
 app = Flask(__name__)
 

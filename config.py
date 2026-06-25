@@ -12,7 +12,7 @@ print('Reading config file...')
 class Config:
     
     # Firestore credentials
-    FIRESTORE_SECRET = os.getenv('FIRESTORE_SECRET')
+    FIRESTORE_API_KEY = os.getenv('FIRESTORE_SECRET')
     firestore_client = None
 
     # Firestore table info
