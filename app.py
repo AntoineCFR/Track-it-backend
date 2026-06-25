@@ -12,4 +12,4 @@ app = Flask(__name__)
 
 @app.route('/api/users', methods=['GET'])
 def users_get():
-    return jsonify(app_users_get()), Config.HTTP_SUCCESS_CODE
+    return jsonify(doc for doc in app_users_get()), Config.HTTP_SUCCESS_CODE
